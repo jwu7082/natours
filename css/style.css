@@ -10,16 +10,27 @@ Dark green: #28b485
 /* --------------------------------------- */
 /* BASIC SETUP */
 /* --------------------------------------- */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
+/* Instead of putting box-sizing: border-box; in *, we force inheritance on all elements. 
+https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice */
+/* the universal selector overrides anything, including html and body. If we put border-box, we wouldn't be able
+to change the box-sizing property of other elements to content-box or some other value. */
+/* https://teamtreehouse.com/community/why-using-the-universal-selector-if-we-can-apply-a-css-rule-for-the-whole-document-using-body-or-html */
+/* the universal selector * only applies to real elements. *::before and *::after are needed to target all pseudoelements as well */
 
 html {
     /* font-size: 10px; */
     /* bad practice to use px for overall font-size. use % of browser font-size */
     font-size: 62.5%; /* broweser default font-size tends to be 16px. we want 10px */
+    /* We use 62.5%, or 10px, because it'll make doing things in terms of rem easier.
+    That way, rem units will be similar to px (just divided by 10). 
+    If font-size in the root html element were 9px, it would be difficult to convert px to rem. */
     
     /* not in body b/c rem is relative to the root element (html) */
 }
@@ -31,6 +42,7 @@ body {
     line-height: 1.7;
     color: #777;
     padding: 30px; /* white border */
+    box-sizing: border-box;
 }
 
 /* --------------------------------------- */
