@@ -17,32 +17,18 @@ Dark green: #28b485
     padding: 0;
     box-sizing: inherit;
 }
-/* Instead of putting box-sizing: border-box; in *, we force inheritance on all elements. 
-https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice */
-/* the universal selector overrides anything, including html and body. If we put border-box, we wouldn't be able
-to change the box-sizing property of other elements to content-box or some other value. */
-/* https://teamtreehouse.com/community/why-using-the-universal-selector-if-we-can-apply-a-css-rule-for-the-whole-document-using-body-or-html */
-/* the universal selector * only applies to real elements. *::before and *::after are needed to target all pseudoelements as well */
 
 html {
-    /* font-size: 10px; */
-    /* bad practice to use px for overall font-size. use % of browser font-size */
-    font-size: 62.5%; /* broweser default font-size tends to be 16px. we want 10px */
-    /* We use 62.5%, or 10px, because it'll make doing things in terms of rem easier.
-    That way, rem units will be similar to px (just divided by 10). 
-    If font-size in the root html element were 9px, it would be difficult to convert px to rem. */
-    
-    /* not in body b/c rem is relative to the root element (html) */
+    font-size: 62.5%;
 }
 
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px; /* white border */
-    box-sizing: border-box; /* width and height include padding and border, not just content (content-box) */
+    padding: 30px;
+    box-sizing: border-box; 
 }
 
 /* --------------------------------------- */
@@ -68,13 +54,11 @@ body {
 .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-    /* inc dist with blur */
 }
 
 .btn:active {
     transform: translateY(-1px);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-    /* closer: decrease shadow blur to 10px and width to 5px */
 }
 
 /* Button animation */
@@ -116,7 +100,7 @@ body {
 
 .header__logo-box {
     position: absolute;
-    top: 4rem; /* 40px */
+    top: 4rem; 
     left: 4rem;
 }
 
@@ -145,13 +129,6 @@ body {
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
-    
-    /*
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    */
-    /* animation-delay: 3s; */
     animation: moveInLeft 1s ease-out; 
 }
 
@@ -160,7 +137,6 @@ body {
     font-size: 2rem;
     font-weight: 700px;
     letter-spacing: 1.75rem;
-    
     animation: moveInRight 1s ease-out;
 }
 
@@ -168,7 +144,6 @@ body {
     animation: moveInBottom .5s ease-out .75s;
     /* animation name, duration, timing function, delay */
     animation-fill-mode: backwards; 
-    /* https://www.w3schools.com/cssref/css3_pr_animation-fill-mode.asp */
 }
 
 /* --------------------------------------- */
@@ -178,7 +153,7 @@ body {
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-10rem); /* -100 px */
+        transform: translateX(-10rem);
     }
     80% {
         transform: translateX(1rem);
