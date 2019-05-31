@@ -1,8 +1,10 @@
-
-/* VARIABLE DECLARATIONS */
 $color-primary: #55c57a; // medium green
 $color-primary-light: #7ed56f; // light green
 $color-primary-dark: #28b485; // dark green
+
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-black: #000;
 
 /* --------------------------------------- */
 /* BASIC SETUP */
@@ -15,7 +17,7 @@ $color-primary-dark: #28b485; // dark green
     box-sizing: inherit;
 }
 
-html {
+html { // rem refers to root (html) element
     font-size: 62.5%;
 }
 
@@ -23,7 +25,7 @@ body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: #777;
+    color: $color-grey-dark;
     padding: 30px;
     box-sizing: border-box; 
 }
@@ -31,55 +33,63 @@ body {
 /* --------------------------------------- */
 /* REUSABLE COMPONENTS */
 /* --------------------------------------- */
-.btn:link,
-.btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    border-radius: 10rem;
-    display: inline-block;
-    transition: all .2s;
-    position: relative;
-    font-size: 1.6rem;
-}
+.btn {
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        
+        &::after { // .btn--white::after
+            background-color: #fff;
+        }
+    }
+    
+    &:link, &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        border-radius: 10rem;
+        display: inline-block;
+        transition: all .2s;
+        position: relative;
+        font-size: 1.6rem;
+    }
+    
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        
+        &::after { // .btn:hover::after - hover on ::after pseudoelement
+            transform: scaleX(1.4) scaleY(1.6);  
+            opacity: 0; // without this, transform to pseudoelement will be visible as long as hover is still active 
+        }
+    }
+    
+    &::after { // Button animation: ::after pseudoelement to be transformed (see above)
+        content: ""; /* required */
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        
+        position: absolute; // relative to parents
+        top: 0;
+        left: 0;
+        z-index: -1; // below other elements
+        
+        transition: all .4s;
+    }
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        /* animation name, duration, timing function, delay */
+        animation-fill-mode: backwards; 
+    }
 
-.btn--white {
-    background-color: #fff;
-    color: #777;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-}
-
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-}
-
-/* Button animation */
-.btn::after { /* child of .btn */
-    content: ""; /* required */
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute; /* relative to parent */
-    top: 0;
-    left: 0;
-    z-index: -1; /* below other elements */
-    transition: all .4s;
-}
-
-.btn--white::after {
-    background-color: #fff;
-}
-
-.btn:hover::after { /* hover on ::after pseudoelement */
-    /* transform: scale(1.5); */
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
 }
 
 /* --------------------------------------- */
@@ -95,54 +105,47 @@ body {
     background-position: top;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* clockwise from top left */
     position: relative;
-}
-
-.header__logo-box {
-    position: absolute;
-    top: 4rem; 
-    left: 4rem;
-}
-
-.header__logo {
-    height: 3.5 rem;
-}
-
-.header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    
+    &__logo-box { // .header__logo-box
+        position: absolute;
+        top: 4rem; 
+        left: 4rem;
+    }
+    
+    &__logo {
+        height: 3.5 rem;
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
 }
 
 .heading-primary {
-    color: #fff;
+    color: $color-white;
     text-transform: uppercase;
     margin-bottom: 6rem;
+    backface-visibility: hidden; // for animations
     
-    backface-visibility: hidden;
-}
-
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation: moveInLeft 1s ease-out; 
-}
-
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700px;
-    letter-spacing: 1.75rem;
-    animation: moveInRight 1s ease-out;
-}
-
-.btn--animated {
-    animation: moveInBottom .5s ease-out .75s;
-    /* animation name, duration, timing function, delay */
-    animation-fill-mode: backwards; 
+    &--main { // .heading-primary--main
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation: moveInLeft 1s ease-out; 
+    }
+    
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700px;
+        letter-spacing: 1.75rem;
+        animation: moveInRight 1s ease-out;
+    }
 }
 
 /* --------------------------------------- */
