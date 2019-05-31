@@ -1,0 +1,62 @@
+// Reusable Components
+
+.btn {
+    &:link, &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        border-radius: 10rem;
+        display: inline-block;
+        transition: all .2s;
+        position: relative;
+        font-size: 1.6rem;
+    }
+    
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        
+        &::after { // .btn:hover::after - hover on ::after pseudoelement
+            transform: scaleX(1.4) scaleY(1.6);  
+            opacity: 0; // without this, transform to pseudoelement will be visible as long as hover is still active 
+        }
+    }
+    
+    // Button hover animation
+    &::after { // ::after pseudoelement to be transformed (see above)
+        content: ""; // required
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        
+        position: absolute; // relative to parents
+        top: 0;
+        left: 0;
+        z-index: -1; // below other elements
+        
+        transition: all .4s;
+    }
+    
+    // Button entrance animation
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        // animation name, duration, timing function, delay
+        animation-fill-mode: backwards;  
+        // w3schools.com/cssref/css3_pr_animation-fill-mode.asp
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        
+        &::after { // .btn--white::after
+            background-color: #fff;
+        }
+    }
+}
