@@ -9,12 +9,7 @@
         display: inline-block;
         transition: all .2s;
         position: relative;
-        font-size: 1.6rem;
-    }
-    
-    &:active {
-        transform: translateY(-1px);
-        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        font-size: $default-font-size;
     }
     
     &:hover {
@@ -25,6 +20,11 @@
             transform: scaleX(1.4) scaleY(1.6);  
             opacity: 0; // without this, transform to pseudoelement will be visible as long as hover is still active 
         }
+    }
+    
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
     }
     
     // Button hover animation
