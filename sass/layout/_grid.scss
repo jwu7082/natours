@@ -1,15 +1,12 @@
 .row {
-    background-color: #eee;
+    //background-color: #eee;
     
-    max-width: $grid-width;
-    // max-width instead of width: if viewport is smaller than specified value, fill 100% of width
-    margin: 0 auto; 
-    // center block elements within another block element
+    max-width: $grid-width; // max-width instead of width: if viewport is smaller than specified value, fill 100% of width
+    margin: 0 auto; // center block elements within another block element
     
     // .row:not(:last-child) selects everything BUT .row:last-child
     &:not(:last-child) {
-        margin-bottom: $gutter-vertical;
-        // alternative to setting margin-bottom: 0 for .row:last-child
+        margin-bottom: $gutter-vertical; // alternative to setting margin-bottom: 0 for .row:last-child
     }
     
     
@@ -20,7 +17,7 @@
     // ^= select all attributes beginning with...
     // $= select all attributes ending in...
     [class^="col-"] {
-        background-color: red;
+        //background-color: red;
         float: left;
         &:not(:last-child) {
             margin-right: $gutter-horizontal;

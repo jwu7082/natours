@@ -108,7 +108,6 @@ body {
     background-color: #fff; }
 
 .row {
-  background-color: #eee;
   max-width: 114rem;
   margin: 0 auto; }
   .row:not(:last-child) {
@@ -118,7 +117,6 @@ body {
     display: table;
     clear: both; }
   .row [class^="col-"] {
-    background-color: red;
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
