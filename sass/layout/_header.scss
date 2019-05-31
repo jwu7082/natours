@@ -6,7 +6,8 @@
     url(../img/hero.jpg);
     background-size: cover;
     background-position: top;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); // clockwise from top left
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); // clockwise from top left
+    // Leaves white gap of 95-75 = 20 vh. Move following section up by 20vh to cover gap
     position: relative;
     
     &__logo-box { // .header__logo-box
