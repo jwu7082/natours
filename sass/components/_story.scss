@@ -1,6 +1,6 @@
 .story {
     width: 75%;
-    // block element, so use margin to center
+    // Use margin: 0 auto; to center block elements
     margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba($color-black, .1);
     background-color: $color-white;
@@ -14,7 +14,11 @@
 //        transform: skewX(12deg);
 //    }
 //     // Doesn't work on img but works on text because img already has a transform property overriding it
-//     // Apply skewX(12deg) to each direct child separately.
+//     // Apply skewX(12deg) to each direct child separately (&__shape and &__text).
+    
+    &__text {
+        transform: skewX(12deg);
+    }
     
     &__shape { // currently a circle for customer img + name caption
         width: 15rem;
@@ -37,14 +41,44 @@
         // To move elements that are floated, don't mess with margins. Use transform
         transform: translateX(-3rem) skewX(12deg);
         // Add left padding of 3 rem since part of the padding is now occupied by the circle
+        
+        position: relative;
     }
     
     // Responsive images should always have a dimension defined
     &__img {
         height: 100%; // image inside &__shape, which has a defined height
+        transform: translateX(-4rem) scale(1.4); 
+        // translated left 40px to put person in the center
+        // Don't need skewX because child of &__shape
+        backface-visibility: hidden;
+        transition: all .5s;
     }
     
-    &__text {
-        transform: skewX(12deg);
+    &__caption {
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        
+        position: absolute; // want it centered on img. container is &__shape
+        // Centering absolute positioned elements:
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%); // changed -50% to 20% for transform effect
+        
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+    
+    &:hover &__caption { // on hover, change caption
+        transform: translate(-50%, -50%);
+        opacity: 1;  
+    }
+    
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
     }
 }
