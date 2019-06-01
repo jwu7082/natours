@@ -32,5 +32,6 @@
 
 .section-stories {
     padding: 15rem 0;
-    background-color: $color-grey-light-1; // placeholder for CSS styling. replacing background with video
+    // background-color: $color-grey-light-1; // placeholder for CSS styling. replacing background with video
+    position: relative; // parent for .bg-video element (see components)
 }
