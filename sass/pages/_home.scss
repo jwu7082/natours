@@ -44,7 +44,7 @@
 .book { // in _home.scss because not reusable component. only the form itself is
     background-image: url(../img/nat-10.jpg);
     background-size: cover; // can also use 100% (of width), which is the same thing as cover
-    border-radius: 3px;
+    border-radius: $border-radius-small;
     box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
     
     height: 50rem; // for testing purposes. content will define height later 

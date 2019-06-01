@@ -1,5 +1,5 @@
 .card {
-    border-radius: 3px;
+    border-radius: $border-radius-small;
     
     // lower perspective, less dramatic
     perspective: 150rem; // must be defined in parent element for natural hover
