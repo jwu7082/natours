@@ -1,0 +1,50 @@
+.story {
+    width: 75%;
+    // block element, so use margin to center
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem; // added left padding of 3rem because of &__shape transform
+    font-size: $default-font-size;
+    
+    transform: skewX(-12deg);
+//    & > * { // direct child selector
+//        transform: skewX(12deg);
+//    }
+//     // Doesn't work on img but works on text because img already has a transform property overriding it
+//     // Apply skewX(12deg) to each direct child separately.
+    
+    &__shape { // currently a circle for customer img + name caption
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        // background-color: orangered; // placeholder for img for CSS styling
+        
+        // shape-outside defines where/how text wraps around the element with class .story__shape
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside
+        // only works if element is floated and has defined dimensions (width, height)
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); // radius at x y, or 50% radius at center 
+        // Define the shape of which text will wrap around. 
+        // Same value as clip-path for actual element (see below)
+        
+        // Shapes the actual element 
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        
+        // To move elements that are floated, don't mess with margins. Use transform
+        transform: translateX(-3rem) skewX(12deg);
+        // Add left padding of 3 rem since part of the padding is now occupied by the circle
+    }
+    
+    // Responsive images should always have a dimension defined
+    &__img {
+        height: 100%; // image inside &__shape, which has a defined height
+    }
+    
+    &__text {
+        transform: skewX(12deg);
+    }
+}

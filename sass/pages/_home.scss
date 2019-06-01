@@ -14,12 +14,11 @@
     background-size: cover;
     
     transform: skewY(-7deg); // skew whole section
-    // need to skew feature boxes in opp direction
     
+    // need to skew feature boxes in opp direction so only background is skewed
     & > * { // every direct* child
         transform: skewY(7deg); // to offset parent section-features skew
     }
-    // Don't put transform: skewY(7deg); in .feature-box, because every descendant element will be skewed.
     // & > * notation only refers to direct children (the single row)
     
     margin-top: -10rem; // cover white-space created by skew
@@ -29,4 +28,9 @@
     background-color: $color-grey-light-1;
     padding: 25rem 0 15rem 0;
     margin-top: -10rem;
+}
+
+.section-stories {
+    padding: 15rem 0;
+    background-color: $color-grey-light-1; // placeholder for CSS styling. replacing background with video
 }
