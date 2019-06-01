@@ -1,0 +1,18 @@
+.bg-video { // video container
+    position: absolute; // set parent section-stories (in _home.scss) to position: relative;
+    top: 0;
+    left: 0;
+    height: 100%; // 100% of parent height (section-stories height)
+    width: 100%;
+    z-index: -1;
+    opacity: .15;
+    overflow: hidden;
+    
+    &__content {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; 
+        // cover: fill entire parent element while maintaining aspect ratio
+        // fill: fill entire parent element but don't maintain aspect ratio 
+    }
+}
