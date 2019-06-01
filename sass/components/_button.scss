@@ -56,7 +56,16 @@
         color: $color-grey-dark;
         
         &::after { // .btn--white::after
-            background-color: #fff;
+            background-color: $color-white;
+        }
+    }
+    
+       &--green {
+        background-color: $color-primary;
+        color: $color-white;
+        
+        &::after { // .btn--green::after
+            background-color: $color-primary;
         }
     }
 }

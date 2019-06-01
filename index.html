@@ -97,12 +97,13 @@
             
             <section class="section-tours" id="section-tours">
                <!-- HEADING -->
-                <div class="u-center-text u-margin-bottom-big">
+                <div class="u-center-text u-margin-bottom-big"> 
                     <h2 class="heading-secondary">
                         Most popular tours
                     </h2>
                 </div>
-                <div class="row">
+                <div class="row u-center-text"> 
+                <!-- added utility class u-center-text to apply text-align: center; to elements with no set text-align value -->
                    <!-- CARD 1 -->
                     <div class="col-1-of-3">
                        <div class="card">
@@ -204,6 +205,12 @@
                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="u-center-text u-margin-top-huge">
+                <!-- u-margin-top-huge instead of u-margin-top-big
+                   section heading has a margin-bottom of 80px (8rem), 
+                   but we want 10rem since shadow makes distance seem smaller -->
+                    <a href="#" class="btn btn--green">Discover all tours</a>
                 </div>
             </section>
             
