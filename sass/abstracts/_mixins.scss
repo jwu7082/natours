@@ -5,10 +5,3 @@
         clear: both; // both float left and float right
     }
 }
-
-// Centers absolute-positioned elements
-@mixin center-absolute {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}

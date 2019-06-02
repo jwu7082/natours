@@ -39,7 +39,9 @@
     &__list {
         list-style: none;
         position: absolute;
-        @mixin center-absolute; // centers absolute-positioned elements
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     
     &__item {
