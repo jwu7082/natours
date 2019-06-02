@@ -1,0 +1,57 @@
+.navigation {
+    &__checkbox {
+        display: none;
+    }
+    
+    &__button {
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6rem; // button is 1rem higher and wider than the background (initial green circle)
+        right: 6rem;
+        z-index: 2000;
+    }
+    
+    &__background {
+        // Green circle expanding from behind the white button circle
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed; // like absolute, takes element out of the flow but stays in same position
+        top: 6.5rem; // .5 radius further from top because white button is 1rem higher in total (radius bigger by .5)
+        right: 6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 1000;
+    }
+    
+    // Will take up the whole viewport
+    &__nav {
+        height: 100vh; // 100% of viewport height
+        width: 100%; // block element, will automatically occupy 100% of width anyway
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1500;
+    }
+    
+    &__list {
+        list-style: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    &__item {
+        
+    }
+    
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+        }
+    }
+}
