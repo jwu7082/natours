@@ -142,7 +142,7 @@
             margin: 0 auto; // center block element
             
             li {
-               // text-align: center; // Use utility class .u-center-text 
+                text-align: center;  
                 font-size: 1.5rem;
                 padding: 1rem;
                 &:not(:last-child) {
@@ -164,7 +164,7 @@
         width: 90%; // btn adapts to width of container
         
         // applies to all descendants including price-only, price-value, and btn text
-        //  text-align: center; // Use utility class .u-center-text
+        text-align: center; 
     }
     
     &__price-box { // Contains price-only and price-value
