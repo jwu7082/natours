@@ -12,6 +12,8 @@
         top: 6rem; // button is 1rem higher and wider than the background (initial green circle)
         right: 6rem;
         z-index: 2000;
+        
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
     }
     
     &__background {
@@ -25,17 +27,26 @@
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000;
         
-        transform: scale(80); // for dev purposes to style navigation list and links
+        //transform: scale(80); // for dev purposes to style navigation list and links
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        // cubic-bezier: transition timing function https://easings.net/en#easeInOutQuint
     }
     
     // Will take up the whole viewport
     &__nav {
         height: 100vh; // 100% of viewport height
-        width: 100%; // block element, will automatically occupy 100% of width anyway
+        // block element, will automatically occupy 100% of width 
         position: fixed;
         top: 0;
-        right: 0; // could use left: 0 too, but entire width so doesn't matter
+        left: 0;
         z-index: 1500;
+        
+        // see &__checkbox:checked ~ &__nav
+        opacity: 0; // but links are still there
+        width: 0;
+        
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55); // https://easings.net/en#easeInOutBack
+        // 1.55 means the nav will go 55% out of its 100% width before returning to 100% 
     }
     
     &__list {
@@ -79,5 +90,14 @@
             color: $color-primary;
             transform: translateX(1rem);
         }
+    }
+    
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+    
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
     }
 }
