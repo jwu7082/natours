@@ -12,6 +12,7 @@
         background-color: rgba($color-white, .5);
         width: 90%;
         display: block;
+        transition: all .3s; // for border-bottom transitions between &:focus:invalid and &:focus
         
         border: none;
         font-family: inherit;
@@ -35,6 +36,7 @@
         }
     }
     
+    // Only shows up when we start typing
     &__label {
         font-size: 1.2rem;
         font-weight: 700;
@@ -43,7 +45,7 @@
         margin-left: 2rem; // to position it exactly under the placeholder text
         margin-top: .7rem;
         
-        transition: all .3s;
+        transition: all .3s; 
     }
     
     // Separate from &__input nesting because not styling input but label
@@ -56,4 +58,61 @@
         transform: translateY(-4rem); // will move down when we start typing
     }
     // Once we start typing, placeholder no longer shown so opacity, visibility, and transform are removed
+    
+    
+    // RADIO BUTTON STYLING
+    &__radio-group {
+        width: 49%;
+        display: inline-block;
+    }
+    
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+        
+        position: relative;
+        padding-left: 4.5rem; // away from custom button
+    }
+    
+    // Our custom button, since we can't style the actual button (will hide it and connect the two)
+    &__radio-button {
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+        display: inline-block; 
+   
+        position: absolute;
+        left: 0; // relative to radio label. same location as actual button .form__radio-input. to move custom button away from label, we changed the padding-left property of the radio-label rather than the left property of the button
+        top: -.4rem;
+        
+        &::after {
+            content: ""; // required
+            display: block; // for box model properties (margin, height, width, padding, etc)
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            
+            position: absolute;
+            top: 50%; // parent is the custom radio-button. its position is already set to absolute, which is fine
+            left: 50%;
+            transform: translate(-50%, -50%); // center of parent
+            
+            background-color: $color-primary;
+            opacity: 0;
+            transition: opacity .2s;
+        } 
+    }
+    
+    // can also use ~ instead of +
+    // when .form__radio-input::checked, 
+    // modify .form__radio-button::after, a descendant of its sibling .radio__label
+    &__radio-input:checked + &__radio-label &__radio-button::after {
+        opacity: 1;
+    }
+    
+    // Actual browser radio button 
+    &__radio-input {
+        display: none;
+    }
 }
