@@ -41,11 +41,22 @@
     background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
 }
 
-.book { // in _home.scss because not reusable component. only the form itself is
-    background-image: url(../img/nat-10.jpg);
-    background-size: cover; // can also use 100% (of width), which is the same thing as cover
+// in _home.scss because not reusable component. only the form itself is
+.book {
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient#Customizing_Gradients
+    background-image: linear-gradient(105deg, 
+        rgba($color-white, .9) 0%, 
+        rgba($color-white, .9) 50%, 
+        transparent 50%), 
+        url(../img/nat-10.jpg); 
+    background-size: cover; 
     border-radius: $border-radius-small;
-    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
     
     height: 50rem; // for testing purposes. content will define height later 
+    
+    &__form {
+        width: 50%;
+        padding: 6rem;
+    }
 }
