@@ -1,0 +1,69 @@
+.footer {
+    background-color: $color-grey-dark-3;
+    padding: 10rem 0;
+    font-size: 1.4rem;
+    color: $color-grey-light-1; // for footer to inherit
+    
+    // div containing logo img
+    &__logo-box { // img is an inline element
+        text-align: center;
+    }
+    
+    // img itself
+    &__logo {
+        width: 15rem;
+        height: auto;
+        margin-bottom: 8rem;
+    }
+    
+    // div containing unordered list
+    &__navigation {
+        border-top: solid 1px $color-grey-dark;
+        padding-top: 2rem;
+        // want it only as long as the navigation list
+        display: inline-block; // doesn't occupy 100% of width - only as much as it needs
+    }
+    
+    &__list {
+        list-style: none;
+    }
+    
+    &__item {
+        text-decoration: none;
+        display: inline-block; // side by side
+        
+        
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+    
+    &__link {
+        &:link,
+        &:visited {
+            color: $color-grey-light-1; // state element so doesn't automatically inherit
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: all .2s;
+        }
+        
+        &:hover,
+        &:active {
+            color: $color-primary;
+            background-color: $color-grey-dark-3; // otherwise slightly transparent 
+            box-shadow: 0 1rem 2rem rgba($color-black, .4);
+            transform: rotate(5deg) scale(1.3);
+        }
+    }
+    
+    &__copyright {
+        // Same border-top as &__navigation
+        border-top: solid 1px $color-grey-dark;
+        padding-top: 2rem;
+        
+        // A little too long compared to navigation's line
+        width: 80%;
+        float: right;
+    }
+}
