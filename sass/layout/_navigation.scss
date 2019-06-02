@@ -24,6 +24,8 @@
         right: 6.5rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000;
+        
+        transform: scale(80); // for dev purposes to style navigation list and links
     }
     
     // Will take up the whole viewport
@@ -32,12 +34,13 @@
         width: 100%; // block element, will automatically occupy 100% of width anyway
         position: fixed;
         top: 0;
-        right: 0;
+        right: 0; // could use left: 0 too, but entire width so doesn't matter
         z-index: 1500;
     }
     
     &__list {
         list-style: none;
+        text-align: center;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -45,13 +48,36 @@
     }
     
     &__item {
-        
+        margin: 1rem;
     }
     
     &__link {
-        &:link,
+        &:link, 
         &:visited {
+            display: inline-block; // to use padding and translate
+            padding: 1rem 2rem; // usually looks better to give more padding on sides for links
+            font-size: 3rem;
+            font-weight: 300;
+            color: $color-white;
             text-decoration: none;
+            text-transform: uppercase;
+
+            //background-image: linear-gradient(120deg, orangered 0%, orangered 50%, $color-white 50%); // for dev purposes
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 250%; // increasing background size will shift gradient because more zoomed in 
+            transition: all .4s;
+            
+            span {
+                display: inline-block;
+                margin-right: 1.5rem;
+            }
+        }
+        
+        &:hover, 
+        &:active {
+            background-position: 100%; // same size 250%, but change position 
+            color: $color-primary;
+            transform: translateX(1rem);
         }
     }
 }
