@@ -1,3 +1,59 @@
 .form {
+    // Each "group" refers to each input field 
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
     
+    // Input box & text
+    &__input {
+        font-size: 1.5rem;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        width: 90%;
+        display: block;
+        
+        border: none;
+        font-family: inherit;
+        color: inherit;
+        border-bottom: 3px solid transparent; 
+        // if we don't add it here, when we "focus" on the field boxes, it'll move down to add the 3px
+        
+        &:focus { // .form__input:focus
+            outline: none; // default blue outline 
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary; // for valid inputs (see below @ .form__input:focus:invalid)
+            
+            // Style input field placeholder. Only Safari/Chrome
+            &::-webkit-input-placeholder {
+                color: $color-grey-dark-2;
+            }
+        }
+        
+        &:focus:invalid { // invalid input
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+    }
+    
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        
+        display: block; // in order to use box model properties (margin sizes)
+        margin-left: 2rem; // to position it exactly under the placeholder text
+        margin-top: .7rem;
+        
+        transition: all .3s;
+    }
+    
+    // Separate from &__input nesting because not styling input but label
+    // can't do &__input:placeholder-shown &__label because they are siblings. label is not a child
+    // adjacent sibling selector (comes immediately after): use +
+    // For general sibling selector, use ~
+    &__input:placeholder-shown + &__label {
+        opacity: 0; // invisible but still on page
+        visibility: hidden; // can't just use visibility without opacity because can't animate visibility
+        transform: translateY(-4rem); // will move down when we start typing
+    }
+    // Once we start typing, placeholder no longer shown so opacity, visibility, and transform are removed
 }
