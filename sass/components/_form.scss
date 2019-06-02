@@ -93,10 +93,8 @@
             width: 1.3rem;
             border-radius: 50%;
             
-            position: absolute;
-            top: 50%; // parent is the custom radio-button. its position is already set to absolute, which is fine
-            left: 50%;
-            transform: translate(-50%, -50%); // center of parent
+            position: absolute; // parent is the custom radio-button. its position is already set to absolute, which is fine
+            @mixin center-absolute; // center of parent
             
             background-color: $color-primary;
             opacity: 0;
