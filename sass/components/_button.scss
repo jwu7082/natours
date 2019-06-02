@@ -1,7 +1,7 @@
 // Reusable Components
 
 .btn {
-    &:link, &:visited {
+    &, &:link, &:visited {
         text-transform: uppercase;
         text-decoration: none;
         padding: 1.5rem 4rem;
@@ -10,6 +10,11 @@
         transition: all .2s;
         position: relative;
         font-size: $default-font-size;
+        
+        // Change for the <button> element, otherwise for <a> elements the below isn't needed
+        // the <button> element doesn't have the :link or :visited tags like anchors do, so add & to the selector.
+        border: none;
+        cursor: pointer;
     }
     
     &:hover {
@@ -22,9 +27,13 @@
         }
     }
     
-    &:active {
+    // added &:focus for the <button> form element 
+    &:active, &:focus {
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        
+        // for <button> element
+        outline: none; // remove blue box focus
     }
     
     // Button hover animation
