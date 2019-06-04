@@ -96,7 +96,7 @@
     }
     
     // FUNCTIONALITY
-    
+    // Checkbox triggers navigation menu
     &__checkbox:checked ~ &__background {
         transform: scale(80);
     }
