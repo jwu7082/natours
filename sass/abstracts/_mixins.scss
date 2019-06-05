@@ -38,3 +38,9 @@
         @media only screen and (min-width: 112.5em) { @content };
     }
 }
+
+// ORDER TO APPLY MIXINS: 
+// Base + typography 
+// General layout + grid
+// Page layouts
+// Components
