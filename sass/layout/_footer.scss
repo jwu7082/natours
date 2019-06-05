@@ -11,13 +11,18 @@
     // div containing logo img
     &__logo-box { // img is an inline element
         text-align: center;
+        margin-bottom: 8rem;
+        
+        
+        @include respond(tab-port) {
+            margin-bottom: 6rem;
+        }
     }
     
     // img itself
     &__logo {
         width: 15rem;
         height: auto;
-        margin-bottom: 8rem;
     }
     
     // div containing unordered list
