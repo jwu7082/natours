@@ -4,6 +4,10 @@
     font-size: 1.4rem;
     color: $color-grey-light-1; // for footer to inherit
     
+    @include respond(tab-port) {
+        padding: 8rem 0;
+    }
+    
     // div containing logo img
     &__logo-box { // img is an inline element
         text-align: center;
@@ -22,6 +26,11 @@
         padding-top: 2rem;
         // want it only as long as the navigation list
         display: inline-block; // doesn't occupy 100% of width - only as much as it needs
+        
+        @include respond(tab-port) {
+            width: 100%;
+            text-align: center;
+        }
     }
     
     &__list {
@@ -65,5 +74,10 @@
         // A little too long compared to navigation's line
         width: 80%;
         float: right;
+        
+        @include respond(tab-port) {
+            width: 100%;
+            float: none;
+        }
     }
 }

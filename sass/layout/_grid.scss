@@ -1,12 +1,21 @@
 .row {
     //background-color: #eee;
-    
-    max-width: $grid-width; // max-width instead of width: if viewport is smaller than specified value, fill 100% of width
     margin: 0 auto; // center block elements within another block element
+    
+    max-width: $grid-width; 
+    // max-width instead of width: 
+    // if viewport is smaller than specified value 1140px, fill 100% of width
+    @include respond(tab-port) {
+        width: 50%; // don't want 100%
+    }
     
     // .row:not(:last-child) selects everything BUT .row:last-child
     &:not(:last-child) {
         margin-bottom: $gutter-vertical; // alternative to setting margin-bottom: 0 for .row:last-child
+        
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small; // margin-bottom for rows
+        }
     }
     
     
@@ -19,8 +28,18 @@
     [class^="col-"] {
         //background-color: red;
         float: left;
+        
+        @include respond(tab-port) {
+            width: 100% !important; // make sure none of the above width calculations are applied
+        }
+        
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+            
+            @include respond(tab-port) { // too squashed at 900px
+                margin-right: 0; // no need for gutter, no longer side-by-side
+                margin-bottom: $gutter-vertical-small; // columns need margin-bottom now
+            }
         }
     }
     
