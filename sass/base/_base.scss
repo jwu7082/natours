@@ -11,6 +11,23 @@ html { // rem refers to root (html) element
     font-size: 62.5%; 
     // overall setting for sizing
     // defines what 1 rem is, so stays in _base.scss not _typography.scss
+    
+    // root font-size is 62.5% of browser's default 16px, or 10px
+    // 1rem = 10px
+    
+    @include respond(tab-land) { // width < 1200?
+        font-size: 56.25%; // want 1rem = 9px, so 9/16 = 56.25%
+    }
+    @include respond(tab-port) { // width < 900?
+        font-size: 50%; // want 1rem = 8px, so 8/16 = 50%
+    }
+    // Both phone & tab-port breakpoints have font-size: 50%, so @include respond(phone) is unnecessary
+    // Desktop-first approach: calculates by max width (see _mixins.scss). Also put bigger widths first otherwise will override in wrong order
+    // Reverse for mobile-first approach (calculates by min width)
+    
+    @include respond(big-desktop) { // width > 1800? 
+        font-size: 75%; // want 1 rem = 12px, so 12/16 = 75% 
+    }
 }
 
 body {
