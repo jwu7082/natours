@@ -182,4 +182,64 @@
         font-weight: 100;
     }
     
+    
+    
+    
+    
+    
+    // ------------------------------------------------------------------------------------------
+    // CARD DESIGN CHANGE FOR 900PX SCREEN WIDTH AND LOWER
+    // Copy all the above and remove what isn't needed/stays the same
+    @include respond(tab-port) { 
+        height: auto; 
+        // used to be 52rem, same height as the sides as a substitute for clearfix (sides are floated so parent collapsed and lost height)
+        border-radius: 3px; // want it on whole thing not just each "side" because adding back to front now
+        background-color: $color-white;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15); // want on entire card elem not just side
+        
+
+        &__side {
+            height: auto;
+            position: relative;
+            box-shadow: none; // added to whole card instead
+            
+            &--front {
+              background-color: $color-white;  
+            }
+
+            &--back {
+                transform: rotateY(0); // changed to 0, don't want rotation
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+        
+        &__details {
+            padding: 1rem 3rem;
+        }
+
+        // hover card: get rid of rotation 
+        &:hover &__side { 
+            &--front {
+                transform: rotateY(0); // changed to 0, don't want rotation
+            }
+        }
+
+        // PREVIOUSLY BACK-SIDE STYLING, NOW WANT ON FRONT-SIDE 
+        &__cta { // container for button and price box
+            position: relative;
+            top: 0%;
+            left: 0%;
+            transform: translate(0);
+            width: 100%; 
+            padding: 7rem 4rem 4rem 4rem;
+        }
+
+        &__price-box { // Contains price-only and price-value
+            margin-bottom: 3rem;
+        }
+
+        &__price-value { 
+            font-size: 4rem;
+        }
+    }
 }
