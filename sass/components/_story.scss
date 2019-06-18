@@ -16,8 +16,24 @@
 //     // Doesn't work on img but works on text because img already has a transform property overriding it
 //     // Apply skewX(12deg) to each direct child separately (&__shape and &__text).
     
+    
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+    
+    @include respond(phone) {
+        transform: skewX(0);
+    }
+    
+    
     &__text {
-        transform: skewX(12deg);
+        transform: skewX(12deg); // to counteract container skew of -12deg
+        
+        @include respond(phone) {
+            transform: skewX(0);
+        }
     }
     
     &__shape { // currently a circle for customer img + name caption
@@ -41,6 +57,9 @@
         // To move elements that are floated, don't mess with margins. Use transform
         transform: translateX(-3rem) skewX(12deg);
         // Add left padding of 3 rem since part of the padding is now occupied by the circle
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0);
+        }   
         
         position: relative;
     }
